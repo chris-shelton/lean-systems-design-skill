@@ -1,48 +1,86 @@
 ---
-name: lean-systems-design
-description: "Apply Elon Musk-inspired system design thinking for research, engineering, and business workflows: rigorously challenge requirements, delete steps, simplify/optimize what remains, accelerate iteration, then automate. Use when designing or revising systems, processes, or products that need lean, high-velocity execution."
+name: simplify-then-ship
+description: "Use this skill when the user wants to simplify, implement, redesign, debug, plan, optimize, or de-risk a system, workflow, codebase, architecture, process, research plan, or technical objective. Apply a first-principles execution loop: challenge requirements, delete parts, simplify what remains, accelerate feedback, then automate only stable work. Especially useful when work feels overcomplicated, slow, brittle, approval-heavy, or prematurely automated."
 ---
 
-# Lean Systems Design (Musk-inspired)
+# Simplify Then Ship
 
-Use this when shaping any system/process (product design, research workflow, ops runbook). Follow the sequence; do not skip ahead.
+Apply this as an operating mode, not a lecture. Drive toward a smaller, clearer system with faster proof.
 
-## Quickstart
-1) State the objective, constraints, success measures, and current system sketch.
-2) Run the five-pass loop below in order; capture changes after each pass.
-3) Produce a concise plan and, if applicable, experiment/rollout steps.
+## Start
 
-## Five-Pass Workflow (in order)
-- Pass 1 - Make requirements less dumb
-  - List every requirement with the requestor's name; reject "dept says."
-  - For each, ask: What outcome does this serve? Evidence? What if we drop/relax it?
-  - Reframe into testable, minimal success criteria; delete or rewrite fuzzy items.
-- Pass 2 - Delete parts/processes
-  - Enumerate components/steps; try to remove each. Target at least 10% removal.
-  - For every kept step, name the accountable owner. If no owner, delete.
-  - Ban "just in case" work; allow re-adding only with a concrete trigger.
-- Pass 3 - Simplify before optimizing
-  - Merge steps, reduce variants/options, standardize interfaces, name single paths.
-  - Collapse handoffs and approvals; prefer defaults over configuration.
-  - If it shouldn't exist, don't polish it. Stop optimization of non-critical paths.
-- Pass 4 - Accelerate cycle time
-  - Shorten feedback loops: smaller batch sizes, faster checkpoints, parallel where safe.
-  - Define the fastest safe "learn loop" (build-measure-learn or design-test-review).
-  - Add leading indicators to spot drift early.
-- Pass 5 - Automate last
-  - Automate only stable, high-volume, well-understood steps.
-  - Remove redundant in-process checks once end-quality is consistently high.
-  - Keep a manual fallback and monitoring for automation drift.
+1. State the objective in one sentence.
+2. Name the constraint that matters most: time, cost, safety, correctness, maintainability, user value, compliance, or learning speed.
+3. Sketch the current system as requirements, steps, components, handoffs, assumptions, and feedback loops.
+4. If facts are missing, mark them as assumptions and keep moving with the smallest reversible next step.
 
-## Heuristics and Checks
-- Every requirement has a named owner and measurable outcome.
-- Any step without a failure mode it prevents is a deletion candidate.
-- Prefer subtraction over addition; default answer to "add a step" is no.
-- Bias to single paths over branching; branch only with explicit thresholds.
-- Fast loop beats perfect plan; ship thin slices to validate.
+## Action Loop
 
-## Deliverables to Produce
-- Crisp objective and success metrics.
-- Simplified system map (pre/post change) highlighting deletions.
-- Top risks and the shortest feedback loop to catch them.
-- Rollout/experiment plan with owners and timelines.
+Run these passes in order. Do not optimize, automate, or add tooling before deletion and simplification.
+
+### 1. Challenge Requirements
+
+- Attach each requirement to a named source, evidence, and intended outcome.
+- Convert fuzzy requirements into measurable success criteria.
+- Treat inherited rules, "best practices," and department preferences as hypotheses.
+- Ask what fails if the requirement is removed, relaxed, delayed, or scoped to fewer cases.
+- Keep only requirements that protect the objective or a real constraint.
+
+### 2. Delete Parts
+
+- List the code paths, process steps, meetings, approvals, interfaces, artifacts, research tasks, or design elements.
+- Try to remove each one before improving it.
+- Delete "just in case" work unless it has a concrete trigger and owner.
+- Prefer fewer states, fewer variants, fewer handoffs, fewer dependencies, and fewer documents.
+- If a removed item must return, re-add the smallest version with the reason recorded.
+
+### 3. Simplify What Remains
+
+- Merge duplicate paths and standardize names, interfaces, defaults, and decision rules.
+- Collapse handoffs where one owner can carry the work.
+- Replace broad abstractions with direct flows when the abstraction is not paying rent.
+- Optimize only the remaining critical path.
+- Stop polishing anything that should not exist.
+
+### 4. Accelerate Feedback
+
+- Define the fastest safe learn loop: build-measure-learn, read-test-decide, prototype-review, or run-observe-fix.
+- Reduce batch size until progress can be validated quickly.
+- Parallelize only independent work.
+- Add leading indicators that reveal drift before the final outcome fails.
+- Prefer reversible experiments over large speculative plans.
+
+### 5. Automate Last
+
+- Automate only stable, frequent, well-understood work.
+- Keep humans in the loop where judgment, ambiguity, safety, or low volume dominate.
+- Remove redundant in-process checks once end quality is consistently high.
+- Keep a manual fallback and a drift signal for every automation.
+
+## Apply By Work Type
+
+- Code: remove unused branches, duplicate state, speculative abstractions, needless dependencies, and slow test loops before tuning.
+- Architecture: reduce services, queues, contracts, layers, and cross-team ownership until the data/control flow is obvious.
+- Product or design: cut features, modes, settings, and edge-case UI before improving visual polish.
+- Process: remove approvals, meetings, status artifacts, and handoffs that do not prevent a named failure.
+- Research: narrow the question, delete low-yield sources, test the riskiest assumption first, and stop when the decision is informed enough.
+
+## Output
+
+Return the lean result in the smallest useful format:
+
+- Objective and primary constraint.
+- Deletions: what to remove or not do.
+- Simplified design: the new minimal path.
+- Fastest validation loop: how to learn whether it works.
+- Automation candidates: only if the work is stable enough.
+- Risks or guardrails: the few that actually matter.
+
+For implementation tasks, make the change after the loop when the path is clear. For planning tasks, produce a ranked action plan with the first reversible step.
+
+## Guardrails
+
+- Do not use this skill to justify reckless cuts to safety, security, compliance, accessibility, data integrity, or user trust.
+- Do not delete something merely because it is inconvenient; delete it because its purpose is weak or better served elsewhere.
+- Do not replace discovery with bravado. When uncertainty is material, run the smallest test that can collapse it.
+- Do not automate ambiguity.
